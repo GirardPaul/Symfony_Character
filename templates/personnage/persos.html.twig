@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Personnages{% endblock %}
+
+{% block monTitre %}
+Liste des Personnages
+{% endblock %}
+
+
+
+
+
+
+{% block body %}
+<table class="table">
+    <tr class="thead-dark">
+        <th>Image</th>
+        <th>Pseudo</th>
+        <th>Age</th>
+        <th>Sexe</th>
+        <th>Force</th>
+        <th>Agilité</th>
+        <th>Intelligence</th>
+
+    </tr>
+
+    {%  for player in players %}
+
+    <tr>
+
+        <td><img src="{{asset('images/personnages/' ~ player.pseudo ~ '.png')}}"></td>
+        <td><a href="{{ path('afficher_personnage', {'pseudo' : player.pseudo|lower}) }}">{{ player.pseudo }}</a></td>
+        <td>{{ player.age }}</td>
+        <td>
+            {% if player.sexe %}
+            Homme
+            {% else %}
+            Femme
+            {% endif %}
+        </td>
+        <td>{{ player.caracteristiques.force }}</td>
+        <td>{{ player.caracteristiques.agilite }}</td>
+        <td>{{ player.caracteristiques.intelligence }}</td>
+
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+
+
+
+
+
+
+
+
+{# <div><img src="{{ asset("images/personnages/Marc.png") }}"></div>
+<div>Pseudo : {{ pseudo }}</div>
+<div>Age : {{ age }}</div>
+<div>Force : {{ caracteristiques.force }}</div>
+<div>Agilite : {{ caracteristiques.agilite }}</div>
+<div>Intelligence : {{ caracteristiques.intelligence }}</div> #}
+
+{% endblock %}

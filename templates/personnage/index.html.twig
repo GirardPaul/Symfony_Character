@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+
+{% block monTitre %}
+Page d'accueil
+{% endblock %}
+
+
+{% block body %}
+
+<a href="{{path("personnages")}}">Personnages</a>
+<a href="{{path("armes")}}">Armes</a>
+
+{% endblock %}
